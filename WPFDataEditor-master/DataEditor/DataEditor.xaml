@@ -1,0 +1,43 @@
+﻿<Window x:Class="WPFDataEditor.DataEditor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFDataEditor"
+        mc:Ignorable="d"
+        Title="DataEditor" Height="450" Width="626.639">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="DataTemplate.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <DockPanel LastChildFill="False" Margin="0">
+        <Menu DockPanel.Dock="Top" Height="26" >
+            <MenuItem Header="File" Width="100" Height="26">
+                <MenuItem x:Name="saveMenuItem" Header="Save" Click="SaveMenuItem_Click"/>
+                <MenuItem x:Name="openMenuItem" Header="Open" Click="OpenMenuItem_Click" />
+            </MenuItem>
+        </Menu>
+        <StackPanel Orientation="Vertical" Width="194">
+            <ListBox x:Name="listBox" Background="#FFD8E4C6" IsSynchronizedWithCurrentItem="True" Height="200">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="Black" BorderThickness="2" Padding="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox Text="{Binding Name}"/>
+                                <TextBlock Text="{Binding Name.Length, StringFormat=: \{0\}}"/>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <Button x:Name="addButton" Content="Add" Click="AddButton_Click"/>
+            <Button x:Name="removeButton" Content="Remove" Click="RemoveButton_Click"/>
+        </StackPanel>
+        <ContentControl Content="{Binding ElementName=listBox, Path=ItemsSource}" Width="420" 
+                        ContentTemplate ="{StaticResource studentDataTemplate}" Margin="0,0,0,10">
+        </ContentControl>
+    </DockPanel>
+</Window>

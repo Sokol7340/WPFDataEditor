@@ -1,0 +1,22 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:WPFDataEditor">
+    <DataTemplate x:Key="studentDataTemplate" DataType="{x:Type local:Student}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
+            <TextBlock Text="Name:" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center"/>
+            <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Path=Name}" VerticalAlignment="Center" IsReadOnly="False"/>
+            <TextBlock Text="Group:" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center"/>
+            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=Name}" VerticalAlignment="Center" IsReadOnly="False"/>
+        </Grid>
+    </DataTemplate>
+
+</ResourceDictionary>
